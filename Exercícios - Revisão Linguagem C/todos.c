@@ -1,8 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void ex1(int n, int k)
 {
-    int v[n];
+    int *v = (int *)malloc(n * sizeof(int));
+
+    if (v == NULL)
+    {
+        printf("Erro ao alocar memória!\n");
+        return;
+    }
 
     for (int i = 0; i < n; i++)
     {
@@ -21,25 +28,27 @@ void ex1(int n, int k)
                 soma = v[i];
                 soma += v[j];
             }
-            
-            printf("%d\n\n", soma);
 
             if (soma == k)
             {
-                printf("True\n");
+                printf("\nTrue\n\n");
                 verifica = 1;
             }
         }
     }
 
-    if (verifica == 0){
-        printf ("False\n");
+    if (verifica == 0)
+    {
+        printf("\nFalse\n\n");
     }
 
     for (int i = 0; i < n; i++)
     {
         printf("%d ", v[i]);
     }
+
+    free(v);
+    return;
 }
 
 int main()
@@ -53,6 +62,7 @@ int main()
     switch (op)
     {
     case 1:
+    {
         int n, k;
 
         printf("Insira o tamanho do vetor: \n");
@@ -63,7 +73,7 @@ int main()
         ex1(n, k);
 
         break;
-
+    }
     default:
         break;
     }
