@@ -8,17 +8,13 @@ int main()
     printf("Insira um número para verificação: \n");
     scanf("%d", &n);
 
-    if (n < 2){
-        printf("Não primo");
-    }
-
-    if (((n % 2) != 0 && (n % 3) != 0 && (n % 5) != 0 && (n % 7) != 0) || n == 2 || n == 3 || n == 5 || n == 7)
+    if (n >= 2 && (((n % 2) != 0 && (n % 3) != 0 && (n % 5) != 0 && (n % 7) != 0) || n == 2 || n == 3 || n == 5 || n == 7))
     {
-        printf("É primo");
+        printf("\nÉ primo");
     }
     else
     {
-        printf("Não primo");
+        printf("\nNão primo");
     }
     return 0;
 }
