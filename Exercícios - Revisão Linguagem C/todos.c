@@ -1,8 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void ex1(int n, int k)
+void somaDePares()
 {
+    int n, k;
+
+    printf("Insira o tamanho do vetor: \n");
+    scanf("%d", &n);
+    printf("Insira o valor a verificar se existe no vetor: \n");
+    scanf("%d", &k);
+
     int *v = (int *)malloc(n * sizeof(int));
 
     if (v == NULL)
@@ -51,6 +58,68 @@ void ex1(int n, int k)
     return;
 }
 
+void produto()
+{
+    int n;
+
+    do
+    {
+        printf("Insira o tamanho do vetor (tamanho mínimo 2): \n");
+        scanf("%d", &n);
+
+    } while (n < 2);
+
+    int *v = (int *)malloc(n * sizeof(int));
+
+    if (v == NULL)
+    {
+        printf("Erro ao alocar na memória\n");
+        return;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("insira o %d° valor: ", i + 1);
+        scanf("%d", &v[i]);
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        int produto = 1;
+
+        for (int j = 0; j < n; j++)
+        {
+            if (i != j)
+            {
+                produto *= v[j];
+            }
+        }
+
+        printf("%d ", produto);
+    }
+
+    free(v);
+    return;
+}
+
+void primos()
+{
+    int n;
+
+    printf("Insira um número para verificação: \n");
+    scanf("%d", &n);
+
+    if (n >= 2 && ((n % 2) != 0 && (n % 3) != 0 && (n % 5) != 0 && (n % 7) != 0) || n == 2 || n == 3 || n == 5 || n == 7)
+    {
+        printf("\nÉ primo");
+    }
+    else
+    {
+        printf("\nNão primo");
+    }
+    return;
+}
+
 int main()
 {
     int op;
@@ -63,14 +132,26 @@ int main()
     {
     case 1:
     {
-        int n, k;
 
-        printf("Insira o tamanho do vetor: \n");
-        scanf("%d", &n);
-        printf("Insira o valor a verificar se existe no vetor: \n");
-        scanf("%d", &k);
+        somaDePares();
 
-        ex1(n, k);
+        break;
+    }
+
+    case 2:
+    {
+        int n;
+
+        produto();
+
+        break;
+    }
+
+    case 3:
+    {
+        int n;
+
+        primos();
 
         break;
     }
